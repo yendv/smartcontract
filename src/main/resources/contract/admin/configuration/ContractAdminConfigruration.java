@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @ComponentScan(basePackages = "admin")
 public class ContractAdminConfigruration {
-	/*@Bean
+	/*@Bean 
     public ViewResolver viewResolver() {@Configuration
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);

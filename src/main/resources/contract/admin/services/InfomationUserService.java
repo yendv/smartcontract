@@ -14,4 +14,10 @@ import admin.entity.InfomationUser;
 
 public interface InfomationUserService {
 	public List<InfomationUser> getList();
+	
+	public InfomationUser saveInfomationUser(InfomationUser infoUser);
+	
+	public Boolean validate(InfomationUser infoUser);
+	
+	public InfomationUser deleteInfomationUser(InfomationUser infoUser);
 }

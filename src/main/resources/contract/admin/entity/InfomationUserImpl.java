@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
@@ -19,9 +20,10 @@ import javax.persistence.Table;
 @Table(name = "infomation_user")
 public class InfomationUserImpl implements InfomationUser {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "infomattion_user_seq", sequenceName = "infomattion_user_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="infomattion_user_seq")
 	@Column(name = "id", updatable = false, nullable = false)
-    private int id;
+    private Long id;
 	
 	@Column(name = "name" , nullable = false)
 	private String name;
@@ -39,14 +41,19 @@ public class InfomationUserImpl implements InfomationUser {
 		super();
 		
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
@@ -60,7 +67,10 @@ public class InfomationUserImpl implements InfomationUser {
 		if (getClass() != obj.getClass())
 			return false;
 		InfomationUserImpl other = (InfomationUserImpl) obj;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
@@ -68,14 +78,14 @@ public class InfomationUserImpl implements InfomationUser {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

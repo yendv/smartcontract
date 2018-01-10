@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import admin.entity.InfomationUser;
+import admin.entity.InfomationUserImpl;
 
 /**
  * @author YenDV
@@ -39,7 +40,8 @@ public class InfomationDaoImpl implements InfomationDao {
 	}
 	
 	public InfomationUser saveInfomationUser(InfomationUser user){
-		return (InfomationUser)sessionFactory.getCurrentSession().save(user);
+		Long idSave = (Long)sessionFactory.getCurrentSession().save(user);
+		return findByID(idSave);
 	}
 	
 	public void deleteInfomationUser(InfomationUser user){
@@ -47,7 +49,6 @@ public class InfomationDaoImpl implements InfomationDao {
 	}
 
 	public InfomationUser findByID(Long idUser) {
-		return sessionFactory.getCurrentSession().find(InfomationUser.class, idUser);
+		return sessionFactory.getCurrentSession().find(InfomationUserImpl.class, idUser);
 	}
-	
 }

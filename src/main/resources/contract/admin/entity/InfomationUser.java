@@ -14,12 +14,12 @@ public interface InfomationUser extends Serializable {
 	/**
 	 * @return
 	 */
-	public int getId();
+	public Long getId();
 
 	/**
 	 * @param id
 	 */
-	public void setId(int id);
+	public void setId(Long id);
 
 	/**
 	 * @return

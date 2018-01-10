@@ -25,4 +25,18 @@ public class InfomationUserServiceImpl implements InfomationUserService {
 	public List<InfomationUser> getList(){
 		return infomationDao.getList();
 	}
+
+	public InfomationUser saveInfomationUser(InfomationUser infoUser) {
+		if(!validate(infoUser)) return null;
+		return infomationDao.saveInfomationUser(infoUser);
+	}
+
+	public Boolean validate(InfomationUser infoUser) {
+		return true;
+	}
+
+	public InfomationUser deleteInfomationUser(InfomationUser infoUser) {
+		infomationDao.deleteInfomationUser(infoUser);
+		return infoUser;
+	}
 }
